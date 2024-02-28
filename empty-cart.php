@@ -9,7 +9,9 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
 <html lang="zxx">
 
 
-><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -150,27 +152,42 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                                 <li>
                                     <a href="#offcanvas-wishlish" class="offcanvas-toggle">
                                         <i class="icon-heart"></i>
-                                        <span class="item-count">3</span>
+                                        <span class="item-count"><?php
+                                            // Mendapatkan nilai dari session "keranjang"
+                                            $wish = isset($_SESSION["like"]) ? $_SESSION["like"] : array();
+                                            // Variabel untuk menyimpan total jumlah
+                                            $totalItems = 0;
+                                            // Iterasi melalui semua nilai dalam array "keranjang" dan mencetaknya
+                                            foreach ($wish as $jumlah) {
+                                                // Menambahkan jumlah setiap produk ke totalItems
+                                                $totalItems += $jumlah;
+                                            }
+                                            // Menampilkan total jumlah dalam elemen <span>
+                                            echo $totalItems;
+                                            ?></span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#offcanvas-add-cart" class="offcanvas-toggle">
                                         <i class="icon-bag"></i>
-                                        <?php
-                                        // Mendapatkan nilai dari session "keranjang"
-                                        $keranjang = $_SESSION["keranjang"];
-                                        // Variabel untuk menyimpan total jumlah
-                                        $totalItems = 0;
-                                        // Iterasi melalui semua nilai dalam array "keranjang" dan mencetaknya
-                                        foreach ($keranjang as $jumlah) {
-                                            // Menambahkan jumlah setiap produk ke totalItems
-                                            $totalItems += $jumlah;
-                                        }
-                                        // Menampilkan total jumlah dalam elemen <span>
-                                        ?>
-                                        <span class="item-count"><?php echo $totalItems; ?></span>
+                                        <span class="item-count">
+                                            <?php
+                                            // Mendapatkan nilai dari session "keranjang"
+                                            $keranjang = isset($_SESSION["keranjang"]) ? $_SESSION["keranjang"] : array();
+                                            // Variabel untuk menyimpan total jumlah
+                                            $totalItems = 0;
+                                            // Iterasi melalui semua nilai dalam array "keranjang" dan mencetaknya
+                                            foreach ($keranjang as $jumlah) {
+                                                // Menambahkan jumlah setiap produk ke totalItems
+                                                $totalItems += $jumlah;
+                                            }
+                                            // Menampilkan total jumlah dalam elemen <span>
+                                            echo $totalItems;
+                                            ?>
+                                        </span>
                                     </a>
                                 </li>
+
                                 <li>
                                     <a href="#search">
                                         <i class="icon-magnifier"></i>
@@ -429,68 +446,45 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
             <h4 class="offcanvas-title">Shopping Cart</h4>
             <ul class="offcanvas-cart">
                 <li class="offcanvas-cart-item-single">
-                    <div class="offcanvas-cart-item-block">
-                        <a href="#" class="offcanvas-cart-item-image-link">
-                            <img src="assets/images/product/default/home-1/default-1.jpg" alt=""
-                                class="offcanvas-cart-image">
-                        </a>
-                        <div class="offcanvas-cart-item-content">
-                            <a href="#" class="offcanvas-cart-item-link">Car Wheel</a>
-                            <div class="offcanvas-cart-item-details">
-                                <span class="offcanvas-cart-item-details-quantity">1 x </span>
-                                <span class="offcanvas-cart-item-details-price">$49.00</span>
+                    <?php
+                    $totalHarga = 0;
+                    $fee = 20000;
+                    foreach ($_SESSION["keranjang"] as $id_produk => $jumlah) : ?>
+
+                        <!-- Menampilkan yang sedang di perulangkan berdasarkan id produk -->
+                        <?php
+                        $ambil = $koneksi->query("SELECT * FROM produk WHERE id_produk='$id_produk'");
+                        $pecah = $ambil->fetch_assoc();
+                        $subharga = $pecah["harga_produk"] * $jumlah;
+                        $totalHarga += $subharga;
+                        $totall = $totalHarga + $fee;
+                        ?>
+                        <div class="offcanvas-cart-item-block">
+                            <a href="#" class="offcanvas-cart-item-image-link">
+                                <img src="foto_produk/<?php echo $pecah['foto_produk']; ?>" alt="" class="offcanvas-cart-image">
+                            </a>
+                            <div class="offcanvas-cart-item-content">
+                                <a href="#" class="offcanvas-cart-item-link"><?php echo $pecah["nama_produk"]; ?></a>
+                                <div class="offcanvas-cart-item-details">
+                                    <span class="offcanvas-cart-item-details-quantity"><?php echo $jumlah; ?></span>
+                                    <span class="offcanvas-cart-item-details-price"><?php echo number_format($pecah["harga_produk"]); ?></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="offcanvas-cart-item-delete text-right">
-                        <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
-                    </div>
-                </li>
-                <li class="offcanvas-cart-item-single">
-                    <div class="offcanvas-cart-item-block">
-                        <a href="#" class="offcanvas-cart-item-image-link">
-                            <img src="assets/images/product/default/home-2/default-1.jpg" alt=""
-                                class="offcanvas-cart-image">
-                        </a>
-                        <div class="offcanvas-cart-item-content">
-                            <a href="#" class="offcanvas-cart-item-link">Car Vails</a>
-                            <div class="offcanvas-cart-item-details">
-                                <span class="offcanvas-cart-item-details-quantity">3 x </span>
-                                <span class="offcanvas-cart-item-details-price">$500.00</span>
-                            </div>
+                        <div class="offcanvas-cart-item-delete text-right">
+                            <a href="hapuskeranjang.php?id=<?php echo $id_produk ?>"><i class="fa fa-trash-o"></i></a>
                         </div>
-                    </div>
-                    <div class="offcanvas-cart-item-delete text-right">
-                        <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
-                    </div>
-                </li>
-                <li class="offcanvas-cart-item-single">
-                    <div class="offcanvas-cart-item-block">
-                        <a href="#" class="offcanvas-cart-item-image-link">
-                            <img src="assets/images/product/default/home-3/default-1.jpg" alt=""
-                                class="offcanvas-cart-image">
-                        </a>
-                        <div class="offcanvas-cart-item-content">
-                            <a href="#" class="offcanvas-cart-item-link">Shock Absorber</a>
-                            <div class="offcanvas-cart-item-details">
-                                <span class="offcanvas-cart-item-details-quantity">1 x </span>
-                                <span class="offcanvas-cart-item-details-price">$350.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="offcanvas-cart-item-delete text-right">
-                        <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
-                    </div>
                 </li>
             </ul>
-            <div class="offcanvas-cart-total-price">
-                <span class="offcanvas-cart-total-price-text">Subtotal:</span>
-                <span class="offcanvas-cart-total-price-value">$170.00</span>
-            </div>
-            <ul class="offcanvas-cart-action-button">
-                <li><a href="cart.html" class="btn btn-block btn-golden">View Cart</a></li>
-                <li><a href="compare.html" class=" btn btn-block btn-golden mt-5">Checkout</a></li>
-            </ul>
+        <?php endforeach ?>
+        <div class="offcanvas-cart-total-price">
+            <span class="offcanvas-cart-total-price-text">Subtotal:</span>
+            <span class="offcanvas-cart-total-price-value"><?php echo number_format($totalHarga); ?></span>
+        </div>
+        <ul class="offcanvas-cart-action-button">
+            <li><a href="cart.php" class="btn btn-block btn-golden">View Cart</a></li>
+            <li><a href="compare.php" class=" btn btn-block btn-golden mt-5">Checkout</a></li>
+        </ul>
         </div> <!-- End  Offcanvas Addcart Wrapper -->
 
     </div> <!-- End  Offcanvas Addcart Section -->
@@ -509,8 +503,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                 <li class="offcanvas-wishlist-item-single">
                     <div class="offcanvas-wishlist-item-block">
                         <a href="#" class="offcanvas-wishlist-item-image-link">
-                            <img src="assets/images/product/default/home-1/default-1.jpg" alt=""
-                                class="offcanvas-wishlist-image">
+                            <img src="assets/images/product/default/home-1/default-1.jpg" alt="" class="offcanvas-wishlist-image">
                         </a>
                         <div class="offcanvas-wishlist-item-content">
                             <a href="#" class="offcanvas-wishlist-item-link">Car Wheel</a>
@@ -527,8 +520,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                 <li class="offcanvas-wishlist-item-single">
                     <div class="offcanvas-wishlist-item-block">
                         <a href="#" class="offcanvas-wishlist-item-image-link">
-                            <img src="assets/images/product/default/home-2/default-1.jpg" alt=""
-                                class="offcanvas-wishlist-image">
+                            <img src="assets/images/product/default/home-2/default-1.jpg" alt="" class="offcanvas-wishlist-image">
                         </a>
                         <div class="offcanvas-wishlist-item-content">
                             <a href="#" class="offcanvas-wishlist-item-link">Car Vails</a>
@@ -545,8 +537,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                 <li class="offcanvas-wishlist-item-single">
                     <div class="offcanvas-wishlist-item-block">
                         <a href="#" class="offcanvas-wishlist-item-image-link">
-                            <img src="assets/images/product/default/home-3/default-1.jpg" alt=""
-                                class="offcanvas-wishlist-image">
+                            <img src="assets/images/product/default/home-3/default-1.jpg" alt="" class="offcanvas-wishlist-image">
                         </a>
                         <div class="offcanvas-wishlist-item-content">
                             <a href="#" class="offcanvas-wishlist-item-link">Shock Absorber</a>
@@ -562,7 +553,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                 </li>
             </ul>
             <ul class="offcanvas-wishlist-action-button">
-                <li><a href="#" class="btn btn-block btn-golden">View wishlist</a></li>
+                <li><a href="wishlist.php" class="btn btn-block btn-golden">View wishlist</a></li>
             </ul>
         </div> <!-- End Offcanvas Mobile Menu Wrapper -->
 
@@ -632,8 +623,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                     <div class="row mb-n6">
                         <div class="col-lg-3 col-sm-6 mb-6">
                             <!-- Start Footer Single Item -->
-                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up"
-                                data-aos-delay="0">
+                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up" data-aos-delay="0">
                                 <h5 class="title">INFORMATION</h5>
                                 <ul class="footer-nav">
                                     <li><a href="#">Delivery Information</a></li>
@@ -646,8 +636,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                         </div>
                         <div class="col-lg-3 col-sm-6 mb-6">
                             <!-- Start Footer Single Item -->
-                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up"
-                                data-aos-delay="200">
+                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up" data-aos-delay="200">
                                 <h5 class="title">MY ACCOUNT</h5>
                                 <ul class="footer-nav">
                                     <li><a href="my-account.html">My account</a></li>
@@ -661,8 +650,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                         </div>
                         <div class="col-lg-3 col-sm-6 mb-6">
                             <!-- Start Footer Single Item -->
-                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up"
-                                data-aos-delay="400">
+                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up" data-aos-delay="400">
                                 <h5 class="title">CATEGORIES</h5>
                                 <ul class="footer-nav">
                                     <li><a href="#">Decorative</a></li>
@@ -676,8 +664,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                         </div>
                         <div class="col-lg-3 col-sm-6 mb-6">
                             <!-- Start Footer Single Item -->
-                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up"
-                                data-aos-delay="600">
+                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up" data-aos-delay="600">
                                 <h5 class="title">ABOUT US</h5>
                                 <div class="footer-about">
                                     <p>We are a team of designers and developers that create high quality Magento,
@@ -732,13 +719,10 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
             <!-- Start Footer Bottom -->
             <div class="footer-bottom">
                 <div class="container">
-                    <div
-                        class="row justify-content-between align-items-center align-items-center flex-column flex-md-row mb-n6">
+                    <div class="row justify-content-between align-items-center align-items-center flex-column flex-md-row mb-n6">
                         <div class="col-auto mb-6">
                             <div class="footer-copyright">
-                                <p class="copyright-text">&copy; 2021 <a href="index.html">therankme</a>. Made with <i
-                                        class="fa fa-heart text-danger"></i> by <a href="https://therankme.com/"
-                                        target="_blank">therankme</a> </p>
+                                <p class="copyright-text">&copy; 2021 <a href="index.html">therankme</a>. Made with <i class="fa fa-heart text-danger"></i> by <a href="https://therankme.com/" target="_blank">therankme</a> </p>
 
                             </div>
                         </div>
@@ -768,8 +752,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col text-right">
-                                <button type="button" class="close modal-close" data-bs-dismiss="modal"
-                                    aria-label="Close">
+                                <button type="button" class="close modal-close" data-bs-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true"> <i class="fa fa-times"></i></span>
                                 </button>
                             </div>
@@ -779,8 +762,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="modal-add-cart-product-img">
-                                            <img class="img-fluid"
-                                                src="assets/images/product/default/home-1/default-1.jpg" alt="">
+                                            <img class="img-fluid" src="assets/images/product/default/home-1/default-1.jpg" alt="">
                                         </div>
                                     </div>
                                     <div class="col-md-8">
@@ -817,8 +799,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col text-right">
-                                <button type="button" class="close modal-close" data-bs-dismiss="modal"
-                                    aria-label="Close">
+                                <button type="button" class="close modal-close" data-bs-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true"> <i class="fa fa-times"></i></span>
                                 </button>
                             </div>
@@ -851,32 +832,25 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                                     </div>
                                     <!-- End Large Image -->
                                     <!-- Start Thumbnail Image -->
-                                    <div
-                                        class="product-image-thumb modal-product-image-thumb swiper-container pos-relative mt-5">
+                                    <div class="product-image-thumb modal-product-image-thumb swiper-container pos-relative mt-5">
                                         <div class="swiper-wrapper">
                                             <div class="product-image-thumb-single swiper-slide">
-                                                <img class="img-fluid"
-                                                    src="assets/images/product/default/home-1/default-1.jpg" alt="">
+                                                <img class="img-fluid" src="assets/images/product/default/home-1/default-1.jpg" alt="">
                                             </div>
                                             <div class="product-image-thumb-single swiper-slide">
-                                                <img class="img-fluid"
-                                                    src="assets/images/product/default/home-1/default-2.jpg" alt="">
+                                                <img class="img-fluid" src="assets/images/product/default/home-1/default-2.jpg" alt="">
                                             </div>
                                             <div class="product-image-thumb-single swiper-slide">
-                                                <img class="img-fluid"
-                                                    src="assets/images/product/default/home-1/default-3.jpg" alt="">
+                                                <img class="img-fluid" src="assets/images/product/default/home-1/default-3.jpg" alt="">
                                             </div>
                                             <div class="product-image-thumb-single swiper-slide">
-                                                <img class="img-fluid"
-                                                    src="assets/images/product/default/home-1/default-4.jpg" alt="">
+                                                <img class="img-fluid" src="assets/images/product/default/home-1/default-4.jpg" alt="">
                                             </div>
                                             <div class="product-image-thumb-single swiper-slide">
-                                                <img class="img-fluid"
-                                                    src="assets/images/product/default/home-1/default-5.jpg" alt="">
+                                                <img class="img-fluid" src="assets/images/product/default/home-1/default-5.jpg" alt="">
                                             </div>
                                             <div class="product-image-thumb-single swiper-slide">
-                                                <img class="img-fluid"
-                                                    src="assets/images/product/default/home-1/default-6.jpg" alt="">
+                                                <img class="img-fluid" src="assets/images/product/default/home-1/default-6.jpg" alt="">
                                             </div>
                                         </div>
                                         <!-- Add Arrows -->
@@ -900,35 +874,27 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                                             <span>Color</span>
                                             <div class="product-variable-color">
                                                 <label for="modal-product-color-red">
-                                                    <input name="modal-product-color" id="modal-product-color-red"
-                                                        class="color-select" type="radio" checked>
+                                                    <input name="modal-product-color" id="modal-product-color-red" class="color-select" type="radio" checked>
                                                     <span class="product-color-red"></span>
                                                 </label>
                                                 <label for="modal-product-color-tomato">
-                                                    <input name="modal-product-color" id="modal-product-color-tomato"
-                                                        class="color-select" type="radio">
+                                                    <input name="modal-product-color" id="modal-product-color-tomato" class="color-select" type="radio">
                                                     <span class="product-color-tomato"></span>
                                                 </label>
                                                 <label for="modal-product-color-green">
-                                                    <input name="modal-product-color" id="modal-product-color-green"
-                                                        class="color-select" type="radio">
+                                                    <input name="modal-product-color" id="modal-product-color-green" class="color-select" type="radio">
                                                     <span class="product-color-green"></span>
                                                 </label>
                                                 <label for="modal-product-color-light-green">
-                                                    <input name="modal-product-color"
-                                                        id="modal-product-color-light-green" class="color-select"
-                                                        type="radio">
+                                                    <input name="modal-product-color" id="modal-product-color-light-green" class="color-select" type="radio">
                                                     <span class="product-color-light-green"></span>
                                                 </label>
                                                 <label for="modal-product-color-blue">
-                                                    <input name="modal-product-color" id="modal-product-color-blue"
-                                                        class="color-select" type="radio">
+                                                    <input name="modal-product-color" id="modal-product-color-blue" class="color-select" type="radio">
                                                     <span class="product-color-blue"></span>
                                                 </label>
                                                 <label for="modal-product-color-light-blue">
-                                                    <input name="modal-product-color"
-                                                        id="modal-product-color-light-blue" class="color-select"
-                                                        type="radio">
+                                                    <input name="modal-product-color" id="modal-product-color-light-blue" class="color-select" type="radio">
                                                     <span class="product-color-light-blue"></span>
                                                 </label>
                                             </div>

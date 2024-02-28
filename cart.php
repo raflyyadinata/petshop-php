@@ -4,7 +4,7 @@ session_start();
 $koneksi = new mysqli("localhost", "root", "", "petshop");
 
 if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
-
+    
     echo "<script>location = 'empty-cart.php';</script>";
 }
 
@@ -156,26 +156,42 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
                                 <li>
                                     <a href="#offcanvas-wishlish" class="offcanvas-toggle">
                                         <i class="icon-heart"></i>
-                                        <span class="item-count">1</span>
+                                        <span class="item-count">
+                                        <?php
+                                            // Mendapatkan nilai dari session "keranjang"
+                                            $wish = isset($_SESSION["like"]) ? $_SESSION["like"] : array();
+                                            // Variabel untuk menyimpan total jumlah
+                                            $totalItems = 0;
+                                            // Iterasi melalui semua nilai dalam array "keranjang" dan mencetaknya
+                                            foreach ($wish as $jumlah) {
+                                                // Menambahkan jumlah setiap produk ke totalItems
+                                                $totalItems += $jumlah;
+                                            }
+                                            // Menampilkan total jumlah dalam elemen <span>
+                                            echo $totalItems;
+                                            ?>
+                                        </span>
                                     </a>
                                 </li>
                                 <li>
-                                    <?php
-                                    $total = 0; // Inisialisasi variabel total
-
-                                    foreach ($_SESSION["keranjang"] as $id_produk => $jumlah) :
-                                        // Menampilkan yang sedang di perulangkan berdasarkan id produk
-                                        $ambil = $koneksi->query("SELECT * FROM produk WHERE id_produk='$id_produk'");
-                                        $pecah = $ambil->fetch_assoc();
-                                        $total += $jumlah; // Menambahkan jumlah produk ke dalam total
-                                    endforeach;
-                                    ?>
-
                                     <a href="#offcanvas-add-cart" class="offcanvas-toggle">
                                         <i class="icon-bag"></i>
-                                        <span class="item-count"><?php echo $total; ?></span>
+                                        <span class="item-count">
+                                            <?php
+                                            // Mendapatkan nilai dari session "keranjang"
+                                            $keranjang = isset($_SESSION["keranjang"]) ? $_SESSION["keranjang"] : array();
+                                            // Variabel untuk menyimpan total jumlah
+                                            $totalItems = 0;
+                                            // Iterasi melalui semua nilai dalam array "keranjang" dan mencetaknya
+                                            foreach ($keranjang as $jumlah) {
+                                                // Menambahkan jumlah setiap produk ke totalItems
+                                                $totalItems += $jumlah;
+                                            }
+                                            // Menampilkan total jumlah dalam elemen <span>
+                                            echo $totalItems;
+                                            ?>
+                                        </span>
                                     </a>
-
                                 </li>
                                 <li>
                                     <a href="#search">
@@ -451,72 +467,54 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
         <div class="offcanvas-header text-right">
             <button class="offcanvas-close"><i class="ion-android-close"></i></button>
         </div> <!-- End Offcanvas Header -->
-
+        
+        
         <!-- Start  Offcanvas Addcart Wrapper -->
         <div class="offcanvas-add-cart-wrapper">
             <h4 class="offcanvas-title">Shopping Cart</h4>
             <ul class="offcanvas-cart">
                 <li class="offcanvas-cart-item-single">
+                <?php 
+                $totalHarga = 0;
+                $fee = 20000;
+                foreach ($_SESSION["keranjang"] as $id_produk => $jumlah) : ?>
+
+                <!-- Menampilkan yang sedang di perulangkan berdasarkan id produk -->
+                <?php
+                $ambil = $koneksi->query("SELECT * FROM produk WHERE id_produk='$id_produk'");
+                $pecah = $ambil->fetch_assoc();
+                $subharga = $pecah["harga_produk"] * $jumlah;
+                $totalHarga += $subharga;
+                $totall = $totalHarga + $fee;
+                ?>
                     <div class="offcanvas-cart-item-block">
                         <a href="#" class="offcanvas-cart-item-image-link">
-                            <img src="assets/images/product/default/home-1/default-1.jpg" alt="" class="offcanvas-cart-image">
+                            <img src="foto_produk/<?php echo $pecah['foto_produk']; ?>" alt="" class="offcanvas-cart-image">
                         </a>
                         <div class="offcanvas-cart-item-content">
-                            <a href="#" class="offcanvas-cart-item-link">Car Wheel</a>
+                            <a href="#" class="offcanvas-cart-item-link"><?php echo $pecah["nama_produk"]; ?></a>
                             <div class="offcanvas-cart-item-details">
-                                <span class="offcanvas-cart-item-details-quantity">1 x </span>
-                                <span class="offcanvas-cart-item-details-price">$49.00</span>
+                                <span class="offcanvas-cart-item-details-quantity"><?php echo $jumlah; ?></span>
+                                <span class="offcanvas-cart-item-details-price"><?php echo number_format($pecah["harga_produk"]); ?></span>
                             </div>
                         </div>
                     </div>
                     <div class="offcanvas-cart-item-delete text-right">
-                        <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
-                    </div>
-                </li>
-                <li class="offcanvas-cart-item-single">
-                    <div class="offcanvas-cart-item-block">
-                        <a href="#" class="offcanvas-cart-item-image-link">
-                            <img src="assets/images/product/default/home-2/default-1.jpg" alt="" class="offcanvas-cart-image">
-                        </a>
-                        <div class="offcanvas-cart-item-content">
-                            <a href="#" class="offcanvas-cart-item-link">Car Vails</a>
-                            <div class="offcanvas-cart-item-details">
-                                <span class="offcanvas-cart-item-details-quantity">3 x </span>
-                                <span class="offcanvas-cart-item-details-price">$500.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="offcanvas-cart-item-delete text-right">
-                        <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
-                    </div>
-                </li>
-                <li class="offcanvas-cart-item-single">
-                    <div class="offcanvas-cart-item-block">
-                        <a href="#" class="offcanvas-cart-item-image-link">
-                            <img src="assets/images/product/default/home-3/default-1.jpg" alt="" class="offcanvas-cart-image">
-                        </a>
-                        <div class="offcanvas-cart-item-content">
-                            <a href="#" class="offcanvas-cart-item-link">Shock Absorber</a>
-                            <div class="offcanvas-cart-item-details">
-                                <span class="offcanvas-cart-item-details-quantity">1 x </span>
-                                <span class="offcanvas-cart-item-details-price">$350.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="offcanvas-cart-item-delete text-right">
-                        <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
+                        <a href="hapuskeranjang.php?id=<?php echo $id_produk ?>"><i class="fa fa-trash-o"></i></a>
                     </div>
                 </li>
             </ul>
+            <?php endforeach ?>
             <div class="offcanvas-cart-total-price">
                 <span class="offcanvas-cart-total-price-text">Subtotal:</span>
-                <span class="offcanvas-cart-total-price-value">$170.00</span>
+                <span class="offcanvas-cart-total-price-value"><?php echo number_format($totalHarga); ?></span>
             </div>
             <ul class="offcanvas-cart-action-button">
                 <li><a href="cart.php" class="btn btn-block btn-golden">View Cart</a></li>
                 <li><a href="compare.php" class=" btn btn-block btn-golden mt-5">Checkout</a></li>
             </ul>
-        </div> <!-- End  Offcanvas Addcart Wrapper -->
+        </div>
+         <!-- End  Offcanvas Addcart Wrapper -->
 
     </div> <!-- End  Offcanvas Addcart Section -->
 
@@ -584,7 +582,7 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
                 </li>
             </ul>
             <ul class="offcanvas-wishlist-action-button">
-                <li><a href="#" class="btn btn-block btn-golden">View wishlist</a></li>
+                <li><a href="wishlist.php" class="btn btn-block btn-golden">View wishlist</a></li>
             </ul>
         </div> <!-- End Offcanvas Mobile Menu Wrapper -->
 
@@ -627,7 +625,8 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
                                         </tr>
                                     </thead> <!-- End Cart Table Head -->
                                     <tbody>
-                                        <?php $nomor = 1; ?>
+                                        <?php $nomor = 1;
+                                        ?>
                                         <?php foreach ($_SESSION["keranjang"] as $id_produk => $jumlah) : ?>
                                             <!-- Menampilkan yang sedang di perulangkan berdasarkan id produk -->
                                             <?php
@@ -678,17 +677,17 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
                             <div class="coupon_inner">
                                 <div class="cart_subtotal">
                                     <p>Subtotal</p>
-                                    <p class="cart_amount">$215.00</p>
+                                    <p class="cart_amount"><?php echo number_format($totalHarga); ?></p>
                                 </div>
                                 <div class="cart_subtotal ">
                                     <p>Shipping</p>
-                                    <p class="cart_amount"><span>Flat Rate:</span> $255.00</p>
+                                    <p class="cart_amount">Rp. 20.000</p>
                                 </div>
                                 <a href="#">Calculate shipping</a>
 
                                 <div class="cart_subtotal">
                                     <p>Total</p>
-                                    <p class="cart_amount">$215.00</p>
+                                    <p class="cart_amount">Rp. <?php echo number_format($totall); ?></p>
                                 </div>
                                 <div class="checkout_btn">
                                     <a href="#" class="btn btn-md btn-golden">Proceed to Checkout</a>

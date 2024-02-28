@@ -9,6 +9,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
 <html lang="zxx">
 
 
+>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 
 <head>
@@ -22,30 +23,31 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
 
     <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/vendor/ionicons.css">
     <link rel="stylesheet" href="assets/css/vendor/simple-line-icons.css">
-    <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css"> -->
 
     <!-- Plugin CSS -->
-    <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/plugins/animate.min.css">
     <link rel="stylesheet" href="assets/css/plugins/nice-select.css">
     <link rel="stylesheet" href="assets/css/plugins/venobox.min.css">
     <link rel="stylesheet" href="assets/css/plugins/jquery.lineProgressbar.css">
-    <link rel="stylesheet" href="assets/css/plugins/aos.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/aos.min.css"> -->
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="assets/sass/style.css"> -->
 
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
-    <!-- <link rel="stylesheet" href="assets/css/vendor/vendor.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/vendor.min.css">
     <link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
-    <link rel="stylesheet" href="assets/css/style.min.css"> -->
+    <link rel="stylesheet" href="assets/css/style.min.css">
 
 </head>
 
 <body>
+    <!-- Start Header Area -->
     <header class="header-section d-none d-xl-block">
         <div class="header-wrapper">
             <!-- Start Header Top -->
@@ -185,6 +187,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                                         </span>
                                     </a>
                                 </li>
+
                                 <li>
                                     <a href="#search">
                                         <i class="icon-magnifier"></i>
@@ -199,9 +202,10 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
             <!-- End Header Bottom -->
         </div>
     </header>
+    <!-- Start Header Area -->
 
     <!-- Start Mobile Header -->
-    <div class="mobile-header mobile-header-bg-color--white section-fluid d-lg-block d-xl-none">
+    <div class="mobile-header mobile-header-bg-color--golden section-fluid d-lg-block d-xl-none">
         <div class="container">
             <div class="row">
                 <div class="col-12 d-flex align-items-center justify-content-between">
@@ -209,7 +213,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                     <div class="mobile-header-left">
                         <ul class="mobile-menu-logo">
                             <li>
-                                <a href="index-2.php">
+                                <a href="index.html">
                                     <div class="logo">
                                         <img src="assets/images/logo/logo_black.png" alt="">
                                     </div>
@@ -221,7 +225,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
 
                     <!-- Start Mobile Right Side -->
                     <div class="mobile-right-side">
-                        <ul class="header-action-link action-color--black action-hover-color--green">
+                        <ul class="header-action-link action-color--black action-hover-color--golden">
                             <li>
                                 <a href="#search">
                                     <i class="icon-magnifier"></i>
@@ -267,7 +271,13 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                 <div class="offcanvas-menu">
                     <ul>
                         <li>
-                            <a href="index-2.php"><span>Home</span></a>
+                            <a href="#"><span>Home</span></a>
+                            <ul class="mobile-sub-menu">
+                                <li><a href="index.html">Home 1</a></li>
+                                <li><a href="index-2.html">Home 2</a></li>
+                                <li><a href="index-3.html">Home 3</a></li>
+                                <li><a href="index-4.html">Home 4</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#"><span>Shop</span></a>
@@ -275,7 +285,11 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                                 <li>
                                     <a href="#">Shop Layout</a>
                                     <ul class="mobile-sub-menu">
-                                        <li><a href="shop-full-width.php">Shop</a></li>
+                                        <li><a href="shop-grid-sidebar-left.html">Grid Left Sidebar</a></li>
+                                        <li><a href="shop-grid-sidebar-right.html">Grid Right Sidebar</a></li>
+                                        <li><a href="shop-full-width.html">Full Width</a></li>
+                                        <li><a href="shop-list-sidebar-left.html">List Left Sidebar</a></li>
+                                        <li><a href="shop-list-sidebar-right.html">List Right Sidebar</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -283,13 +297,13 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                                 <li>
                                     <a href="#">Shop Pages</a>
                                     <ul class="mobile-sub-menu">
-                                        <li><a href="cart.php">Cart</a></li>
-                                        <li><a href="empty-cart.php">Empty Cart</a></li>
-                                        <li><a href="wishlist.php">Wishlist</a></li>
-                                        <li><a href="compare.php">Compare</a></li>
-                                        <li><a href="checkout.php">Checkout</a></li>
-                                        <li><a href="login.php">Login</a></li>
-                                        <li><a href="my-account.php">My Account</a></li>
+                                        <li><a href="cart.html">Cart</a></li>
+                                        <li><a href="empty-cart.html">Empty Cart</a></li>
+                                        <li><a href="wishlist.html">Wishlist</a></li>
+                                        <li><a href="compare.html">Compare</a></li>
+                                        <li><a href="checkout.html">Checkout</a></li>
+                                        <li><a href="login.html">Login</a></li>
+                                        <li><a href="my-account.html">My Account</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -297,17 +311,17 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                                 <li>
                                     <a href="#">Product Single</a>
                                     <ul class="mobile-sub-menu">
-                                        <li><a href="produkdetail.php">Product Default</a></li>
-                                        <li><a href="product-details-variable.php">Product Variable</a></li>
-                                        <li><a href="product-details-affiliate.php">Product Referral</a></li>
-                                        <li><a href="product-details-group.php">Product Group</a></li>
-                                        <li><a href="product-details-single-slide.php">Product Slider</a></li>
-                                        <li><a href="product-details-tab-left.php">Product Tab Left</a></li>
-                                        <li><a href="product-details-tab-right.php">Product Tab Right</a></li>
-                                        <li><a href="product-details-gallery-left.php">Product Gallery Left</a></li>
-                                        <li><a href="product-details-gallery-right.php">Product Gallery Right</a></li>
-                                        <li><a href="product-details-sticky-left.php">Product Sticky Left</a></li>
-                                        <li><a href="product-details-sticky-right.php">Product Sticky right</a></li>
+                                        <li><a href="product-details-default.html">Product Default</a></li>
+                                        <li><a href="product-details-variable.html">Product Variable</a></li>
+                                        <li><a href="product-details-affiliate.html">Product Referral</a></li>
+                                        <li><a href="product-details-group.html">Product Group</a></li>
+                                        <li><a href="product-details-single-slide.html">Product Slider</a></li>
+                                        <li><a href="product-details-tab-left.html">Product Tab Left</a></li>
+                                        <li><a href="product-details-tab-right.html">Product Tab Right</a></li>
+                                        <li><a href="product-details-gallery-left.html">Product Gallery Left</a></li>
+                                        <li><a href="product-details-gallery-right.html">Product Gallery Right</a></li>
+                                        <li><a href="product-details-sticky-left.html">Product Sticky Left</a></li>
+                                        <li><a href="product-details-sticky-right.html">Product Sticky right</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -318,25 +332,25 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                                 <li>
                                     <a href="#">Blog Grid</a>
                                     <ul class="mobile-sub-menu">
-                                        <li><a href="blog-grid-sidebar-left.php">Blog Grid Sidebar left</a></li>
-                                        <li><a href="blog-grid-sidebar-right.php">Blog Grid Sidebar Right</a></li>
+                                        <li><a href="blog-grid-sidebar-left.html">Blog Grid Sidebar left</a></li>
+                                        <li><a href="blog-grid-sidebar-right.html">Blog Grid Sidebar Right</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="blog-full-width.php">Blog Full Width</a>
+                                    <a href="blog-full-width.html">Blog Full Width</a>
                                 </li>
                                 <li>
                                     <a href="#">Blog List</a>
                                     <ul class="mobile-sub-menu">
-                                        <li><a href="blog-list-sidebar-left.php">Blog List Sidebar left</a></li>
-                                        <li><a href="blog-list-sidebar-right.php">Blog List Sidebar Right</a></li>
+                                        <li><a href="blog-list-sidebar-left.html">Blog List Sidebar left</a></li>
+                                        <li><a href="blog-list-sidebar-right.html">Blog List Sidebar Right</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a href="#">Blog Single</a>
                                     <ul class="mobile-sub-menu">
-                                        <li><a href="blog-single-sidebar-left.php">Blog Single Sidebar left</a></li>
-                                        <li><a href="blog-single-sidebar-right.php">Blog Single Sidebar Right</a></li>
+                                        <li><a href="blog-single-sidebar-left.html">Blog Single Sidebar left</a></li>
+                                        <li><a href="blog-single-sidebar-right.html">Blog Single Sidebar Right</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -344,13 +358,13 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                         <li>
                             <a href="#"><span>Pages</span></a>
                             <ul class="mobile-sub-menu">
-                                <li><a href="faq.php">Frequently Questions</a></li>
-                                <li><a href="privacy-policy.php">Privacy Policy</a></li>
-                                <li><a href="404.php">404 Page</a></li>
+                                <li><a href="faq.html">Frequently Questions</a></li>
+                                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                <li><a href="404.html">404 Page</a></li>
                             </ul>
                         </li>
-                        <li><a href="about-us.php">About Us</a></li>
-                        <li><a href="contact-us.php">Contact Us</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
                     </ul>
                 </div> <!-- End Mobile Menu Nav -->
             </div> <!-- End Mobile Menu -->
@@ -358,7 +372,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
             <!-- Start Mobile contact Info -->
             <div class="mobile-contact-info">
                 <div class="logo">
-                    <a href="index-2.php"><img src="assets/images/logo/logo_white.png" alt=""></a>
+                    <a href="index.html"><img src="assets/images/logo/logo_white.png" alt=""></a>
                 </div>
 
                 <address class="address">
@@ -375,9 +389,9 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                 </ul>
 
                 <ul class="user-link">
-                    <li><a href="wishlist.php">Wishlist</a></li>
-                    <li><a href="cart.php">Cart</a></li>
-                    <li><a href="checkout.php">Checkout</a></li>
+                    <li><a href="wishlist.html">Wishlist</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
                 </ul>
             </div>
             <!-- End Mobile contact Info -->
@@ -395,7 +409,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
         <!-- Start Mobile contact Info -->
         <div class="mobile-contact-info">
             <div class="logo">
-                <a href="index-2.php"><img src="assets/images/logo/logo_white.png" alt=""></a>
+                <a href="index.html"><img src="assets/images/logo/logo_white.png" alt=""></a>
             </div>
 
             <address class="address">
@@ -412,9 +426,9 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
             </ul>
 
             <ul class="user-link">
-                <li><a href="wishlist.php">Wishlist</a></li>
-                <li><a href="cart.php">Cart</a></li>
-                <li><a href="checkout.php">Checkout</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
             </ul>
         </div>
         <!-- End Mobile contact Info -->
@@ -427,8 +441,8 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
             <button class="offcanvas-close"><i class="ion-android-close"></i></button>
         </div> <!-- End Offcanvas Header -->
 
-        <!-- Start  Offcanvas Addcart Wrapper -->
-        <div class="offcanvas-add-cart-wrapper">
+         <!-- Start  Offcanvas Addcart Wrapper -->
+         <div class="offcanvas-add-cart-wrapper">
             <h4 class="offcanvas-title">Shopping Cart</h4>
             <ul class="offcanvas-cart">
                 <li class="offcanvas-cart-item-single">
@@ -539,7 +553,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                 </li>
             </ul>
             <ul class="offcanvas-wishlist-action-button">
-                <li><a href="wishlist.php" class="btn btn-block btn-green">View wishlist</a></li>
+                <li><a href="wishlist.php" class="btn btn-block btn-golden">View wishlist</a></li>
             </ul>
         </div> <!-- End Offcanvas Mobile Menu Wrapper -->
 
@@ -550,7 +564,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
         <button type="button" class="close">×</button>
         <form>
             <input type="search" placeholder="type keyword(s) here" />
-            <button type="submit" class="btn btn-lg btn-green">Search</button>
+            <button type="submit" class="btn btn-lg btn-golden">Search</button>
         </form>
     </div>
     <!-- End Offcanvas Search Bar Section -->
@@ -558,588 +572,47 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
     <!-- Offcanvas Overlay -->
     <div class="offcanvas-overlay"></div>
 
-    <!-- Start Hero Slider Section-->
-    <div class="hero-slider-section">
-        <!-- Slider main container -->
-        <div class="hero-slider-active swiper-container">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-                <!-- Start Hero Single Slider Item -->
-                <div class="hero-single-slider-item swiper-slide">
-                    <!-- Hero Slider Image -->
-                    <div class="hero-slider-bg">
-                        <img src="assets/images/banner/banner2.jpg" alt="">
-                    </div>
-                    <!-- Hero Slider Content -->
-                    <div class="hero-slider-wrapper">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-auto">
-                                    <div class="hero-slider-content">
-                                        <h4 class="subtitle">Made of Fresh Ingredients</h4>
-                                        <h1 class="title">A natural & <br> organic Skincare </h1>
-                                        <a href="shop-full-width.php" class="btn btn-lg btn-outline-green">shop
-                                            now </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- End Hero Single Slider Item -->
-                <!-- Start Hero Single Slider Item -->
-                <div class="hero-single-slider-item swiper-slide">
-                    <!-- Hero Slider Image -->
-                    <div class="hero-slider-bg">
-                        <img src="assets/images/banner/hero-banner.jpg" alt="">
-                    </div>
-                    <!-- Hero Slider Content -->
-                    <div class="hero-slider-wrapper">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-auto">
-                                    <div class="hero-slider-content">
-                                        <h4 class="subtitle">Premium Facial Skincare</h4>
-                                        <h1 class="title">Fresh Face <br> Natural Skincare</h1>
-                                        <a href="shop-full-width.php.php" class="btn btn-lg btn-outline-green">shop
-                                            now </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- End Hero Single Slider Item -->
-            </div>
-
-            <!-- If we need pagination -->
-            <div class="swiper-pagination active-color-green"></div>
-
-            <!-- If we need navigation buttons -->
-            <div class="swiper-button-prev d-none d-lg-block"></div>
-            <div class="swiper-button-next d-none d-lg-block"></div>
-        </div>
-    </div>
-    <!-- End Hero Slider Section-->
-
-    <!-- Start Company Logo Section -->
-    <div class="company-logo-section section-top-gap-100 section-fluid">
-        <div class="company-logo-wrapper" data-aos="fade-up" data-aos-delay="0">
+    <!-- ...:::: Start Breadcrumb Section:::... -->
+    <div class="breadcrumb-section breadcrumb-bg-color--golden">
+        <div class="breadcrumb-wrapper">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="company-logo-slider default-slider-nav-arrow">
-                            <!-- Slider main container -->
-                            <div class="swiper-container company-logo-slider">
-                                <!-- Additional required wrapper -->
-                                <div class="swiper-wrapper">
-                                    <!-- Start Company Logo Single Item -->
-                                    <div class="company-logo-single-item swiper-slide">
-                                        <div class="image" style="margin-right: 20px;"><img class="img-fluid" src="assets/images/company-logo/brand1.png" alt=""></div>
-                                    </div>
-                                    <!-- End Company Logo Single Item -->
-                                    <!-- Start Company Logo Single Item -->
-                                    <div class="company-logo-single-item swiper-slide">
-                                        <div class="image" style="margin-right: 20px;"><img class="img-fluid" src="assets/images/company-logo/brand2.png" alt=""></div>
-                                    </div>
-                                    <!-- End Company Logo Single Item -->
-                                    <!-- Start Company Logo Single Item -->
-                                    <div class="company-logo-single-item swiper-slide">
-                                        <div class="image" style="margin-right: 20px;"><img class="img-fluid" src="assets/images/company-logo/brand3.png" alt=""></div>
-                                    </div>
-                                    <!-- End Company Logo Single Item -->
-                                    <!-- Start Company Logo Single Item -->
-                                    <div class="company-logo-single-item swiper-slide">
-                                        <div class="image" style="margin-right: 20px;"><img class="img-fluid" src="assets/images/company-logo/brand4.png" alt=""></div>
-                                    </div>
-                                    <!-- End Company Logo Single Item -->
-                                    <!-- Start Company Logo Single Item -->
-                                    <div class="company-logo-single-item swiper-slide">
-                                        <div class="image" style="margin-right: 20px;"><img class="img-fluid" src="assets/images/company-logo/brand5.png" alt=""></div>
-                                    </div>
-                                    <!-- End Company Logo Single Item -->
-                                    <!-- Start Company Logo Single Item -->
-                                    <div class="company-logo-single-item swiper-slide">
-                                        <div class="image" style="margin-right: 20px;"><img class="img-fluid" src="assets/images/company-logo/brand6.png" alt=""></div>
-                                    </div>
-                                    <!-- End Company Logo Single Item -->
-                                    <!-- Start Company Logo Single Item -->
-                                    <div class="company-logo-single-item swiper-slide">
-                                        <div class="image" style="margin-right: 20px;"><img class="img-fluid" src="assets/images/company-logo/brand7.png" alt=""></div>
-                                    </div>
-                                    <!-- End Company Logo Single Item -->
-                                    <!-- Start Company Logo Single Item -->
-                                    <div class="company-logo-single-item swiper-slide">
-                                        <div class="image" style="margin-right: 20px; margin-top:20px;"><img class="img-fluid" src="assets/images/company-logo/brand8.png" alt=""></div>
-                                    </div>
-                                    <!-- End Company Logo Single Item -->
-                                </div>
-                            </div>
-                            <!-- If we need navigation buttons -->
-                            <div class="swiper-button-prev d-none d-md-block"></div>
-                            <div class="swiper-button-next d-none d-md-block"></div>
+                        <h3 class="breadcrumb-title">Empty Wishlist</h3>
+                        <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+                            <nav aria-label="breadcrumb">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="shop-grid-sidebar-left.html">Shop</a></li>
+                                    <li class="active" aria-current="page">Empty Wishlish</li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End Company Logo Section -->
+    </div> <!-- ...:::: End Breadcrumb Section:::... -->
 
-    <!-- Start Banner Section -->
-    <div class="banner-section section-top-gap-100 section-fluid">
-        <div class="banner-wrapper">
-            <div class="container">
-                <div class="row mb-n6">
-                    <div class="col-md-4 col-12 mb-6">
-                        <!-- Start Banner Single Item -->
-                        <div class="banner-single-item banner-style-5 img-responsive" data-aos="fade-up" data-aos-delay="0">
-                            <a href="produkdetail.php" class="image banner-animation">
-                                <img src="assets/images/banner/banner-style-5-img-1.jpg" alt="">
-                            </a>
-                        </div>
-                        <!-- End Banner Single Item -->
-                    </div>
-                    <div class="col-md-4 col-12 mb-6">
-                        <!-- Start Banner Single Item -->
-                        <div class="banner-single-item banner-style-5 img-responsive" data-aos="fade-up" data-aos-delay="200">
-                            <a href="produkdetail.php" class="image banner-animation">
-                                <img src="assets/images/banner/banner-style-5-img-2.jpg" alt="">
-                            </a>
-                        </div>
-                        <!-- End Banner Single Item -->
-                    </div>
-                    <div class="col-md-4 col-12 mb-6">
-                        <!-- Start Banner Single Item -->
-                        <div class="banner-single-item banner-style-5 img-responsive" data-aos="fade-up" data-aos-delay="400">
-                            <a href="produkdetail.php" class="image banner-animation">
-                                <img src="assets/images/banner/banner-style-5-img-3.jpg" alt="">
-                            </a>
-                        </div>
-                        <!-- End Banner Single Item -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Banner Section -->
-
-    <!-- Start Product Default Slider Section -->
-    <div class="product-default-slider-section section-top-gap-100 section-fluid">
-        <!-- Start Section Content Text Area -->
-        <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
+    <!-- ...::::Start About Us Center Section:::... -->
+    <div class="empty-cart-section section-fluid">
+        <div class="emptycart-wrapper">
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
-                        <div class="section-content-gap">
-                            <div class="secton-content">
-                                <h3 class="section-title">the New arrivals</h3>
-                                <p>Preorder now to receive exclusive deals & gifts</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Start Section Content Text Area -->
-        <div class="product-wrapper" data-aos="fade-up" data-aos-delay="200">
-            <div class="container">
-                <div class="row">
-                    <?php
-                    $ambil = $koneksi->query("SELECT * FROM produk ORDER BY tanggal DESC LIMIT 4");
-                    while ($perproduk = $ambil->fetch_assoc()) {
-                    ?>
-                        <!-- Start Product Default Single Item -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <div class="product-default-single-item product-color--green">
-                                <div class="image-box">
-                                    <a href="produkdetail.php?id_produk=<?php echo $perproduk['id_produk']; ?>" class="product-list-img-link" style="width:400px; margin-bottom:30px">
-                                        <img class="img-fluid" src="foto_produk/<?php echo $perproduk['foto_produk']; ?>" alt="">
-                                    </a>
-                                    <div class="action-link">
-                                        <div class="action-link-left">
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a>
-                                        </div>
-                                        <div class="action-link-right">
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>
-                                            <a href="wishlist.php"><i class="icon-heart"></i></a>
-                                            <a href="compare.php"><i class="icon-shuffle"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <div class="content-left">
-                                        <h6 class="title"><a href="produkdetail.php"><?php echo $perproduk['nama_produk']; ?></a></h6>
-                                        <ul class="review-star">
-                                            <li class="fill"><i class="ion-android-star"></i></li>
-                                            <li class="fill"><i class="ion-android-star"></i></li>
-                                            <li class="fill"><i class="ion-android-star"></i></li>
-                                            <li class="fill"><i class="ion-android-star"></i></li>
-                                            <li class="empty"><i class="ion-android-star"></i></li>
-                                        </ul>
-                                    </div>
-                                    <div class="content-right">
-                                        <span class="price">Rp. <?php echo $perproduk['harga_produk']; ?></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Product Default Single Item -->
-                    <?php } ?>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-    <!-- End Product Default Slider Section -->
-
-    <!-- Start Banner Section -->
-    <div class="banner-section section-top-gap-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <!-- Start Banner Single Item -->
-                    <div class="banner-single-item banner-style-6 banner-animation img-responsive" data-aos="fade-up" data-aos-delay="0">
-                        <div class="image">
-                            <img src="assets/images/banner/banner-style-6-img-1.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <h6 class="sub-title">JASMINE GREEN TEA</h6>
-                            <h2 class="title">Herbivore Botanicals
-                                Basic Collection</h2>
-                            <p>On a mission to create all-natural skin care that delivers tangible results, Herbivore
-                                ensures every ingredient within their formulas has a specific purpose, resulting in
-                                highly active.</p>
-                            <a href="produkdetail.php" class="btn btn-lg btn-outline-green icon-space-left"><span class="d-flex align-items-center">Browse <i class="ion-ios-arrow-thin-right"></i></span></a>
-                        </div>
-                    </div>
-                    <!-- End Banner Single Item -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Banner Section -->
-
-    <!-- Start Service Section -->
-    <div class="service-promo-section section-top-gap-100">
-        <div class="service-wrapper">
-            <div class="container">
-                <div class="row">
-                    <!-- Start Service Promo Single Item -->
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="service-promo-single-item" data-aos="fade-up" data-aos-delay="0">
+                    <div class="col-12 col-md-10 offset-md-1 col-xl-6 offset-xl-3">
+                        <div class="emptycart-content text-center">
                             <div class="image">
-                                <img src="assets/images/icons/service-promo-5.png" alt="">
+                                <img class="img-fluid" src="assets/images/emprt-cart/empty-cart.png" alt="">
                             </div>
-                            <div class="content">
-                                <h6 class="title">FREE SHIPPING</h6>
-                                <p>Get 10% cash back, free shipping, free returns, and more at 1000+ top retailers!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Service Promo Single Item -->
-                    <!-- Start Service Promo Single Item -->
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="service-promo-single-item" data-aos="fade-up" data-aos-delay="200">
-                            <div class="image">
-                                <img src="assets/images/icons/service-promo-6.png" alt="">
-                            </div>
-                            <div class="content">
-                                <h6 class="title">30 DAYS MONEY BACK</h6>
-                                <p>100% satisfaction guaranteed, or get your money back within 30 days!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Service Promo Single Item -->
-                    <!-- Start Service Promo Single Item -->
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="service-promo-single-item" data-aos="fade-up" data-aos-delay="400">
-                            <div class="image">
-                                <img src="assets/images/icons/service-promo-7.png" alt="">
-                            </div>
-                            <div class="content">
-                                <h6 class="title">SAFE PAYMENT</h6>
-                                <p>Pay with the world’s most popular and secure payment methods.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Service Promo Single Item -->
-                    <!-- Start Service Promo Single Item -->
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="service-promo-single-item" data-aos="fade-up" data-aos-delay="600">
-                            <div class="image">
-                                <img src="assets/images/icons/service-promo-8.png" alt="">
-                            </div>
-                            <div class="content">
-                                <h6 class="title">LOYALTY CUSTOMER</h6>
-                                <p>Card for the other 30% of their purchases at a rate of 1% cash back.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Service Promo Single Item -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Service Section -->
-
-    <!-- Start Banner Section -->
-    <div class="banner-section section-top-gap-100">
-        <div class="banner-wrapper clearfix">
-            <!-- Start Banner Single Item -->
-            <div class="banner-single-item banner-style-4 banner-animation banner-color--green float-left" data-aos="fade-up" data-aos-delay="0">
-                <div class="image">
-                    <img class="img-fluid" src="assets/images/banner/banner-style-4-img-5.jpg" alt="">
-                </div>
-                <a href="produkdetail.php" class="content">
-                    <div class="inner">
-                        <h4 class="title">Bar Stool</h4>
-                        <h6 class="sub-title">20 products</h6>
-                    </div>
-                    <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
-                </a>
-            </div>
-            <!-- End Banner Single Item -->
-            <!-- Start Banner Single Item -->
-            <div class="banner-single-item banner-style-4 banner-animation banner-color--green float-left" data-aos="fade-up" data-aos-delay="200">
-                <div class="image">
-                    <img class="img-fluid" src="assets/images/banner/banner-style-4-img-6.jpg" alt="">
-                </div>
-                <a href="produkdetail.php" class="content">
-                    <div class="inner">
-                        <h4 class="title">Armchairs</h4>
-                        <h6 class="sub-title">20 products</h6>
-                    </div>
-                    <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
-                </a>
-            </div>
-            <!-- End Banner Single Item -->
-            <!-- Start Banner Single Item -->
-            <div class="banner-single-item banner-style-4 banner-animation banner-color--green float-left" data-aos="fade-up" data-aos-delay="400">
-                <div class="image">
-                    <img class="img-fluid" src="assets/images/banner/banner-style-4-img-7.jpg" alt="">
-                </div>
-                <a href="produkdetail.php" class="content">
-                    <div class="inner">
-                        <h4 class="title">lighting</h4>
-                        <h6 class="sub-title">20 products</h6>
-                    </div>
-                    <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
-                </a>
-            </div>
-            <!-- End Banner Single Item -->
-            <!-- Start Banner Single Item -->
-            <div class="banner-single-item banner-style-4 banner-animation banner-color--green float-left" data-aos="fade-up" data-aos-delay="600">
-                <div class="image">
-                    <img class="img-fluid" src="assets/images/banner/banner-style-4-img-8.jpg" alt="">
-                </div>
-                <a href="produkdetail.php" class="content">
-                    <div class="inner">
-                        <h4>Easy chairs</h4>
-                        <h6>20 products</h6>
-                    </div>
-                    <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
-                </a>
-            </div>
-            <!-- End Banner Single Item -->
-        </div>
-    </div>
-    <!-- End Banner Section -->
-
-
-    <!-- Start Banner Section -->
-    <div class="banner-section section-top-gap-100">
-        <div class="banner-wrapper clearfix">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <!-- Start Banner Single Item -->
-                        <div class="banner-single-item banner-style-13 banner-color--green" data-aos="fade-up" data-aos-delay="0">
-                            <div class="image">
-                                <img src="assets/images/banner/banner-style-13-img-1.jpg" alt="">
-                                <div class="content">
-                                    <div class="text">
-                                        <h5 class="sub-title">SALE 15% OFF YOUR 1ST PURCHASE</h5>
-                                        <h2 class="title">HONO ORGANIC SKIN CARE</h2>
-
-                                        <a href="produkdetail.php" class="btn btn-lg btn-green icon-space-left"><span class="d-flex align-items-center">Shop Now <i class="ion-ios-arrow-thin-right"></i></span></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- End Banner Single Item -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Banner Section -->
-
-    <!-- Start Blog Slider Section -->
-    <div class="blog-default-slider-section section-top-gap-100 section-fluid">
-        <!-- Start Section Content Text Area -->
-        <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="section-content-gap">
-                            <div class="secton-content">
-                                <h3 class="section-title">THE LATEST BLOGS</h3>
-                                <p>Present posts in a best way to highlight interesting moments of your blog.</p>
-                            </div>
+                            <h4 class="title">Your Wishlist is Empty</h4>
+                            <h6 class="sub-title">Sorry Mate... No item Found inside your wishlist!</h6>
+                            <a href="shop-grid-sidebar-left.html" class="btn btn-lg btn-golden">Continue Shopping</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Start Section Content Text Area -->
-        <div class="blog-wrapper" data-aos="fade-up" data-aos-delay="200">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="blog-default-slider default-slider-nav-arrow">
-                            <!-- Slider main container -->
-                            <div class="swiper-container blog-slider">
-                                <!-- Additional required wrapper -->
-                                <div class="swiper-wrapper">
-                                    <!-- Start Product Default Single Item -->
-                                    <div class="blog-default-single-item blog-color--green swiper-slide">
-                                        <div class="image-box">
-                                            <a href="blog-single-sidebar-left.php" class="image-link">
-                                                <img class="img-fluid" src="assets/images/blog/blog-grid-home-1-img-1.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h6 class="title"><a href="blog-single-sidebar-left.php">Blog Post One</a>
-                                            </h6>
-                                            <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex.
-                                                Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
-                                            <div class="inner">
-                                                <a href="blog-single-sidebar-left.php" class="read-more-btn icon-space-left">Read More <span><i class="ion-ios-arrow-thin-right"></i></span></a>
-                                                <div class="post-meta">
-                                                    <a href="#" class="date">24 Apr</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Product Default Single Item -->
-                                    <!-- Start Product Default Single Item -->
-                                    <div class="blog-default-single-item blog-color--green swiper-slide">
-                                        <div class="image-box">
-                                            <a href="blog-single-sidebar-left.php" class="image-link">
-                                                <img class="img-fluid" src="assets/images/blog/blog-grid-home-1-img-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h6 class="title"><a href="blog-single-sidebar-left.php">Blog Post Two</a>
-                                            </h6>
-                                            <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex.
-                                                Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
-                                            <div class="inner">
-                                                <a href="#" class="read-more-btn icon-space-left">Read More <span><i class="ion-ios-arrow-thin-right"></i></span></a>
-                                                <div class="post-meta">
-                                                    <a href="blog-single-sidebar-left.php" class="date">24 Apr</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Product Default Single Item -->
-                                    <!-- Start Product Default Single Item -->
-                                    <div class="blog-default-single-item blog-color--green swiper-slide">
-                                        <div class="image-box">
-                                            <a href="blog-single-sidebar-left.php" class="image-link">
-                                                <img class="img-fluid" src="assets/images/blog/blog-grid-home-1-img-3.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h6 class="title"><a href="blog-single-sidebar-left.php">Blog Post
-                                                    Three</a></h6>
-                                            <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex.
-                                                Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
-                                            <div class="inner">
-                                                <a href="blog-single-sidebar-left.php" class="read-more-btn icon-space-left">Read More <span><i class="ion-ios-arrow-thin-right"></i></span></a>
-                                                <div class="post-meta">
-                                                    <a href="#" class="date">24 Apr</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Product Default Single Item -->
-                                    <!-- Start Product Default Single Item -->
-                                    <div class="blog-default-single-item blog-color--green swiper-slide">
-                                        <div class="image-box">
-                                            <a href="blog-single-sidebar-left.php" class="image-link">
-                                                <img class="img-fluid" src="assets/images/blog/blog-grid-home-1-img-4.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h6 class="title"><a href="blog-single-sidebar-left.php">Blog Post Four</a>
-                                            </h6>
-                                            <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex.
-                                                Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
-                                            <div class="inner">
-                                                <a href="blog-single-sidebar-left.php" class="read-more-btn icon-space-left">Read More <span><i class="ion-ios-arrow-thin-right"></i></span></a>
-                                                <div class="post-meta">
-                                                    <a href="#" class="date">24 Apr</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Product Default Single Item -->
-                                    <!-- Start Product Default Single Item -->
-                                    <div class="blog-default-single-item blog-color--green swiper-slide">
-                                        <div class="image-box">
-                                            <a href="blog-single-sidebar-left.php" class="image-link">
-                                                <img class="img-fluid" src="assets/images/blog/blog-grid-home-1-img-5.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h6 class="title"><a href="blog-single-sidebar-left.php">Blog Post Five</a>
-                                            </h6>
-                                            <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex.
-                                                Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
-                                            <div class="inner">
-                                                <a href="blog-single-sidebar-left.php" class="read-more-btn icon-space-left">Read More <span><i class="ion-ios-arrow-thin-right"></i></span></a>
-                                                <div class="post-meta">
-                                                    <a href="#" class="date">24 Apr</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Product Default Single Item -->
-                                    <!-- Start Product Default Single Item -->
-                                    <div class="blog-default-single-item blog-color--green swiper-slide">
-                                        <div class="image-box">
-                                            <a href="blog-single-sidebar-left.php" class="image-link">
-                                                <img class="img-fluid" src="assets/images/blog/blog-grid-home-1-img-6.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h6 class="title"><a href="blog-single-sidebar-left.php">Blog Post Six</a>
-                                            </h6>
-                                            <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex.
-                                                Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
-                                            <div class="inner">
-                                                <a href="blog-single-sidebar-left.php" class="read-more-btn icon-space-left">Read More <span><i class="ion-ios-arrow-thin-right"></i></span></a>
-                                                <div class="post-meta">
-                                                    <a href="#" class="date">24 Apr</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Product Default Single Item -->
-                                </div>
-                            </div>
-                            <!-- If we need navigation buttons -->
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Blog Slider Section -->
+    </div> <!-- ...::::End  About Us Center Section:::... -->
 
     <!-- Start Footer Section -->
     <footer class="footer-section footer-bg section-top-gap-100">
@@ -1150,12 +623,12 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                     <div class="row mb-n6">
                         <div class="col-lg-3 col-sm-6 mb-6">
                             <!-- Start Footer Single Item -->
-                            <div class="footer-widget-single-item footer-widget-color--green" data-aos="fade-up" data-aos-delay="0">
+                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up" data-aos-delay="0">
                                 <h5 class="title">INFORMATION</h5>
                                 <ul class="footer-nav">
                                     <li><a href="#">Delivery Information</a></li>
                                     <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="contact-us.php">Contact</a></li>
+                                    <li><a href="contact-us.html">Contact</a></li>
                                     <li><a href="#">Returns</a></li>
                                 </ul>
                             </div>
@@ -1163,13 +636,13 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                         </div>
                         <div class="col-lg-3 col-sm-6 mb-6">
                             <!-- Start Footer Single Item -->
-                            <div class="footer-widget-single-item footer-widget-color--green" data-aos="fade-up" data-aos-delay="200">
+                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up" data-aos-delay="200">
                                 <h5 class="title">MY ACCOUNT</h5>
                                 <ul class="footer-nav">
-                                    <li><a href="my-account.php">My account</a></li>
-                                    <li><a href="wishlist.php">Wishlist</a></li>
-                                    <li><a href="privacy-policy.php">Privacy Policy</a></li>
-                                    <li><a href="faq.php">Frequently Questions</a></li>
+                                    <li><a href="my-account.html">My account</a></li>
+                                    <li><a href="wishlist.html">Wishlist</a></li>
+                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                    <li><a href="faq.html">Frequently Questions</a></li>
                                     <li><a href="#">Order History</a></li>
                                 </ul>
                             </div>
@@ -1177,7 +650,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                         </div>
                         <div class="col-lg-3 col-sm-6 mb-6">
                             <!-- Start Footer Single Item -->
-                            <div class="footer-widget-single-item footer-widget-color--green" data-aos="fade-up" data-aos-delay="400">
+                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up" data-aos-delay="400">
                                 <h5 class="title">CATEGORIES</h5>
                                 <ul class="footer-nav">
                                     <li><a href="#">Decorative</a></li>
@@ -1191,13 +664,13 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                         </div>
                         <div class="col-lg-3 col-sm-6 mb-6">
                             <!-- Start Footer Single Item -->
-                            <div class="footer-widget-single-item footer-widget-color--green" data-aos="fade-up" data-aos-delay="600">
+                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up" data-aos-delay="600">
                                 <h5 class="title">ABOUT US</h5>
                                 <div class="footer-about">
                                     <p>We are a team of designers and developers that create high quality Magento,
                                         Prestashop, Opencart.</p>
 
-                                    <address>
+                                    <address class="address">
                                         <span>Address: Your address goes here.</span>
                                         <span>Email: demo@example.com</span>
                                     </address>
@@ -1230,7 +703,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                                 <h4 class="title">DON'T MISS OUT ON THE LATEST</h4>
                                 <div class="form-newsletter">
                                     <form action="#" method="post">
-                                        <div class="form-fild-newsletter-single-item input-color--green">
+                                        <div class="form-fild-newsletter-single-item input-color--golden">
                                             <input type="email" placeholder="Your email address..." required>
                                             <button type="submit">SUBSCRIBE!</button>
                                         </div>
@@ -1249,7 +722,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                     <div class="row justify-content-between align-items-center align-items-center flex-column flex-md-row mb-n6">
                         <div class="col-auto mb-6">
                             <div class="footer-copyright">
-                                <p class="copyright-text">&copy; 2021 <a href="index-2.php">therankme</a>. Made with <i class="fa fa-heart text-danger"></i> by <a href="https://therankme.com/" target="_blank">therankme</a> </p>
+                                <p class="copyright-text">&copy; 2021 <a href="index.html">therankme</a>. Made with <i class="fa fa-heart text-danger"></i> by <a href="https://therankme.com/" target="_blank">therankme</a> </p>
 
                             </div>
                         </div>
@@ -1296,8 +769,8 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                                         <div class="modal-add-cart-info"><i class="fa fa-check-square"></i>Added to cart
                                             successfully!</div>
                                         <div class="modal-add-cart-product-cart-buttons">
-                                            <a href="cart.php">View Cart</a>
-                                            <a href="checkout.php">Checkout</a>
+                                            <a href="cart.html">View Cart</a>
+                                            <a href="checkout.html">Checkout</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1471,15 +944,15 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
 
     <!-- ::::::::::::::All JS Files here :::::::::::::: -->
     <!-- Global Vendor, plugins JS -->
-    <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
+    <!-- <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
     <script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
     <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
     <script src="assets/js/vendor/popper.min.js"></script>
     <script src="assets/js/vendor/bootstrap.min.js"></script>
-    <script src="assets/js/vendor/jquery-ui.min.js"></script>
+    <script src="assets/js/vendor/jquery-ui.min.js"></script>  -->
 
     <!--Plugins JS-->
-    <script src="assets/js/plugins/swiper-bundle.min.js"></script>
+    <!-- <script src="assets/js/plugins/swiper-bundle.min.js"></script>
     <script src="assets/js/plugins/material-scrolltop.js"></script>
     <script src="assets/js/plugins/jquery.nice-select.min.js"></script>
     <script src="assets/js/plugins/jquery.zoom.min.js"></script>
@@ -1488,15 +961,16 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
     <script src="assets/js/plugins/jquery.lineProgressbar.js"></script>
     <script src="assets/js/plugins/aos.min.js"></script>
     <script src="assets/js/plugins/jquery.instagramFeed.js"></script>
-    <script src="assets/js/plugins/ajax-mail.js"></script>
+    <script src="assets/js/plugins/ajax-mail.js"></script> -->
 
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
-    <!-- <script src="assets/js/vendor/vendor.min.js"></script>
-    <script src="assets/js/plugins/plugins.min.js"></script> -->
+    <script src="assets/js/vendor/vendor.min.js"></script>
+    <script src="assets/js/plugins/plugins.min.js"></script>
 
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
 </body>
+
 
 
 </html>

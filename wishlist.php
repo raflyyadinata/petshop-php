@@ -4,6 +4,11 @@ session_start();
 //koneksi ke database
 $koneksi = new mysqli("localhost", "root", "", "petshop");
 
+if (empty($_SESSION["like"]) or !isset($_SESSION["like"])) {
+    
+    echo "<script>location = 'empty-wishlist.php';</script>";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -157,25 +162,39 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                                 <li>
                                     <a href="#offcanvas-wishlish" class="offcanvas-toggle">
                                         <i class="icon-heart"></i>
-                                        <span class="item-count">3</span>
+                                        <span class="item-count"><?php
+                                            // Mendapatkan nilai dari session "keranjang"
+                                            $wish = isset($_SESSION["like"]) ? $_SESSION["like"] : array();
+                                            // Variabel untuk menyimpan total jumlah
+                                            $totalItems = 0;
+                                            // Iterasi melalui semua nilai dalam array "keranjang" dan mencetaknya
+                                            foreach ($wish as $jumlah) {
+                                                // Menambahkan jumlah setiap produk ke totalItems
+                                                $totalItems += $jumlah;
+                                            }
+                                            // Menampilkan total jumlah dalam elemen <span>
+                                            echo $totalItems;
+                                            ?></span>
                                     </a>
                                 </li>
-                                <li>
+                                 <li>
                                     <a href="#offcanvas-add-cart" class="offcanvas-toggle">
                                         <i class="icon-bag"></i>
-                                        <?php
-                                        // Mendapatkan nilai dari session "keranjang"
-                                        $keranjang = $_SESSION["keranjang"];
-                                        // Variabel untuk menyimpan total jumlah
-                                        $totalItems = 0;
-                                        // Iterasi melalui semua nilai dalam array "keranjang" dan mencetaknya
-                                        foreach ($keranjang as $jumlah) {
-                                            // Menambahkan jumlah setiap produk ke totalItems
-                                            $totalItems += $jumlah;
-                                        }
-                                        // Menampilkan total jumlah dalam elemen <span>
-                                        ?>
-                                        <span class="item-count"><?php echo $totalItems; ?></span>
+                                        <span class="item-count">
+                                            <?php
+                                            // Mendapatkan nilai dari session "keranjang"
+                                            $keranjang = isset($_SESSION["keranjang"]) ? $_SESSION["keranjang"] : array();
+                                            // Variabel untuk menyimpan total jumlah
+                                            $totalItems = 0;
+                                            // Iterasi melalui semua nilai dalam array "keranjang" dan mencetaknya
+                                            foreach ($keranjang as $jumlah) {
+                                                // Menambahkan jumlah setiap produk ke totalItems
+                                                $totalItems += $jumlah;
+                                            }
+                                            // Menampilkan total jumlah dalam elemen <span>
+                                            echo $totalItems;
+                                            ?>
+                                        </span>
                                     </a>
                                 </li>
                                 <li>
@@ -436,63 +455,40 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
             <h4 class="offcanvas-title">Shopping Cart</h4>
             <ul class="offcanvas-cart">
                 <li class="offcanvas-cart-item-single">
+                <?php 
+                $totalHarga = 0;
+                $fee = 20000;
+                foreach ($_SESSION["keranjang"] as $id_produk => $jumlah) : ?>
+
+                <!-- Menampilkan yang sedang di perulangkan berdasarkan id produk -->
+                <?php
+                $ambil = $koneksi->query("SELECT * FROM produk WHERE id_produk='$id_produk'");
+                $pecah = $ambil->fetch_assoc();
+                $subharga = $pecah["harga_produk"] * $jumlah;
+                $totalHarga += $subharga;
+                $totall = $totalHarga + $fee;
+                ?>
                     <div class="offcanvas-cart-item-block">
                         <a href="#" class="offcanvas-cart-item-image-link">
-                            <img src="assets/images/product/default/home-1/default-1.jpg" alt=""
-                                class="offcanvas-cart-image">
+                            <img src="foto_produk/<?php echo $pecah['foto_produk']; ?>" alt="" class="offcanvas-cart-image">
                         </a>
                         <div class="offcanvas-cart-item-content">
-                            <a href="#" class="offcanvas-cart-item-link">Car Wheel</a>
+                            <a href="#" class="offcanvas-cart-item-link"><?php echo $pecah["nama_produk"]; ?></a>
                             <div class="offcanvas-cart-item-details">
-                                <span class="offcanvas-cart-item-details-quantity">1 x </span>
-                                <span class="offcanvas-cart-item-details-price">$49.00</span>
+                                <span class="offcanvas-cart-item-details-quantity"><?php echo $jumlah; ?></span>
+                                <span class="offcanvas-cart-item-details-price"><?php echo number_format($pecah["harga_produk"]); ?></span>
                             </div>
                         </div>
                     </div>
                     <div class="offcanvas-cart-item-delete text-right">
-                        <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
-                    </div>
-                </li>
-                <li class="offcanvas-cart-item-single">
-                    <div class="offcanvas-cart-item-block">
-                        <a href="#" class="offcanvas-cart-item-image-link">
-                            <img src="assets/images/product/default/home-2/default-1.jpg" alt=""
-                                class="offcanvas-cart-image">
-                        </a>
-                        <div class="offcanvas-cart-item-content">
-                            <a href="#" class="offcanvas-cart-item-link">Car Vails</a>
-                            <div class="offcanvas-cart-item-details">
-                                <span class="offcanvas-cart-item-details-quantity">3 x </span>
-                                <span class="offcanvas-cart-item-details-price">$500.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="offcanvas-cart-item-delete text-right">
-                        <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
-                    </div>
-                </li>
-                <li class="offcanvas-cart-item-single">
-                    <div class="offcanvas-cart-item-block">
-                        <a href="#" class="offcanvas-cart-item-image-link">
-                            <img src="assets/images/product/default/home-3/default-1.jpg" alt=""
-                                class="offcanvas-cart-image">
-                        </a>
-                        <div class="offcanvas-cart-item-content">
-                            <a href="#" class="offcanvas-cart-item-link">Shock Absorber</a>
-                            <div class="offcanvas-cart-item-details">
-                                <span class="offcanvas-cart-item-details-quantity">1 x </span>
-                                <span class="offcanvas-cart-item-details-price">$350.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="offcanvas-cart-item-delete text-right">
-                        <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
+                        <a href="hapuskeranjang.php?id=<?php echo $id_produk ?>"><i class="fa fa-trash-o"></i></a>
                     </div>
                 </li>
             </ul>
+            <?php endforeach ?>
             <div class="offcanvas-cart-total-price">
                 <span class="offcanvas-cart-total-price-text">Subtotal:</span>
-                <span class="offcanvas-cart-total-price-value">$170.00</span>
+                <span class="offcanvas-cart-total-price-value"><?php echo number_format($totalHarga); ?></span>
             </div>
             <ul class="offcanvas-cart-action-button">
                 <li><a href="cart.php" class="btn btn-block btn-golden">View Cart</a></li>
@@ -569,7 +565,7 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                 </li>
             </ul>
             <ul class="offcanvas-wishlist-action-button">
-                <li><a href="#" class="btn btn-block btn-golden">View wishlist</a></li>
+                <li><a href="wishlist.php" class="btn btn-block btn-golden">View wishlist</a></li>
             </ul>
         </div> <!-- End Offcanvas Mobile Menu Wrapper -->
 
@@ -632,51 +628,29 @@ $koneksi = new mysqli("localhost", "root", "", "petshop");
                                         </tr>
                                     </thead> <!-- End Cart Table Head -->
                                     <tbody>
+                                    <?php foreach ($_SESSION["like"] as $id_produk => $jumlah) : ?>
+                                        
+                                            
+                                            <!-- Menampilkan yang sedang di perulangkan berdasarkan id produk -->
+                                            <?php
+                                            $ambil = $koneksi->query("SELECT * FROM produk WHERE id_produk='$id_produk'");
+                                            $pecah = $ambil->fetch_assoc();
+                                            $subharga = $pecah["harga_produk"] * $jumlah;
+                                            ?>
+                                            
                                         <!-- Start Wishlist Single Item-->
                                         <tr>
-                                            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                            <td class="product_thumb"><a href="product-details-default.php"><img
-                                                        src="assets/images/product/default/home-1/default-1.jpg"
-                                                        alt=""></a></td>
-                                            <td class="product_name"><a href="product-details-default.php">Handbag
-                                                    fringilla</a></td>
-                                            <td class="product-price">$65.00</td>
+                                        <td class="product_remove"><a href="hapuswishlist.php?id=<?php echo $id_produk ?>"><i class="fa fa-trash-o"></i></a>
+                                                </td>
+                                                <td class="product_thumb"><a href="product-details-default.php"><img src="foto_produk/<?php echo $pecah['foto_produk']; ?>" alt=""></a></td>
+                                                <td class="product_name"><a href="product-details-default.php"><?php echo $pecah["nama_produk"]; ?></a></td>
+                                                <td class="product-price"><?php echo number_format($pecah["harga_produk"]); ?></td>
                                             <td class="product_stock">In Stock</td>
-                                            <td class="product_addcart"><a href="#" class="btn btn-md btn-golden"
-                                                    data-bs-toggle="modal" data-bs-target="#modalAddcart">Add To
+                                            <td class="product_addcart"><a href="beli2.php?id=<?php echo $pecah['id_produk'];?>" class="btn btn-md btn-golden">Add To
                                                     Cart</a></td>
                                         </tr> <!-- End Wishlist Single Item-->
-                                        <!-- Start Wishlist Single Item-->
-                                        <tr>
-                                            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                            <td class="product_thumb"><a href="product-details-default.php"><img
-                                                        src="assets/images/product/default/home-1/default-2.jpg"
-                                                        alt=""></a></td>
-                                            <td class="product_name"><a href="product-details-default.php">Handbags
-                                                    justo</a></td>
-                                            <td class="product-price">$90.00</td>
-                                            <td class="product_stock">In Stock</td>
-                                            <td class="product_addcart"><a href="#" class="btn btn-md btn-golden"
-                                                    data-bs-toggle="modal" data-bs-target="#modalAddcart">Add To
-                                                    Cart</a></td>
-                                        </tr> <!-- End Wishlist Single Item-->
-                                        <!-- Start Wishlist Single Item-->
-                                        <tr>
-                                            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                            <td class="product_thumb"><a href="product-details-default.php"><img
-                                                        src="assets/images/product/default/home-1/default-3.jpg"
-                                                        alt=""></a></td>
-                                            <td class="product_name"><a href="product-details-default.php">Handbag
-                                                    elit</a></td>
-                                            <td class="product-price">$80.00</td>
-                                            <td class="product_stock">In Stock</td>
-                                            <td class="product_addcart"><a href="#" class="btn btn-md btn-golden"
-                                                    data-bs-toggle="modal" data-bs-target="#modalAddcart">Add To
-                                                    Cart</a></td>
-                                        </tr> <!-- End Wishlist Single Item-->
+                                        
+                                        <?php endforeach ?>
                                     </tbody>
                                 </table>
                             </div>
